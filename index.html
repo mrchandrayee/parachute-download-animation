@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0d1a">
+  <!-- Primary SEO -->
+  <title>Download Button — Parachute Progress | mrchandrayee</title>
+  <meta name="description" content="A whimsical download button where a parachute carries your file down as progress fills. Pure HTML, CSS & JavaScript.">
+  <meta name="author" content="mrchandrayee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mrchandrayee.github.io/parachute-download-animation/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mrchandrayee.github.io/parachute-download-animation/">
+  <meta property="og:title" content="Download Button — Parachute Progress | mrchandrayee">
+  <meta property="og:description" content="A whimsical download button where a parachute carries your file down as progress fills. Pure HTML, CSS & JavaScript.">
+  <meta property="og:image" content="https://mrchandrayee.github.io/parachute-download-animation/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mrchandrayee.github.io/parachute-download-animation/">
+  <meta name="twitter:title" content="Download Button — Parachute Progress | mrchandrayee">
+  <meta name="twitter:description" content="A whimsical download button where a parachute carries your file down as progress fills. Pure HTML, CSS & JavaScript.">
+  <meta name="twitter:image" content="https://mrchandrayee.github.io/parachute-download-animation/preview.png">
+  <meta name="twitter:creator" content="@mrchandrayee">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Download Button — Parachute Progress",
+    "description": "A whimsical download button where a parachute carries your file down as progress fills. Pure HTML, CSS & JavaScript.",
+    "url": "https://mrchandrayee.github.io/parachute-download-animation/",
+    "author": { "@type": "Person", "name": "mrchandrayee", "url": "https://github.com/mrchandrayee" },
+    "applicationCategory": "WebApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+<meta name="theme-color" content="#050b11">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="browser">
+  <div class="lights"><i></i><i></i><i></i></div>
+  <div class="crumb"><b>PARACHUTE</b><span>·</span> HTML <span>CSS</span> <em>JS</em></div>
+  <div class="path">localhost / download</div>
+</header>
+
+<main class="app">
+  <div class="eyebrow">MICRO-INTERACTION / 001</div>
+  <h1>Download Button</h1>
+  <p class="subhead">A little payload, delivered with style.</p>
+
+  <section class="download-widget" aria-label="Animated download control">
+    <button class="launch" id="launch" type="button" aria-label="Start download">
+      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+        <path class="rail rail--track" d="M50 7a43 43 0 1 1-.01 0"/>
+        <path class="rail rail--fill" pathLength="1" d="M50 7a43 43 0 1 1-.01 0"/>
+      </svg>
+      <svg class="download-arrow" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 4v17m-8-8 8 8 8-8M6 27h20"/>
+      </svg>
+      <span class="button-glow"></span>
+    </button>
+
+    <div class="delivery" id="delivery" aria-hidden="true">
+      <svg class="rail-line" viewBox="0 0 320 70" preserveAspectRatio="none">
+        <path class="line-track" d="M4 52H316"/>
+        <path class="line-fill" id="lineFill" d="M4 52H316" pathLength="1"/>
+      </svg>
+      <div class="rig" id="rig">
+        <svg viewBox="0 0 54 62" class="rig-svg">
+          <path class="canopy" d="M5 20C7 5 17 2 27 2s20 3 22 18c-7-3-14-3-22 0-8-3-15-3-22 0Z"/>
+          <path class="canopy-seam" d="M5 20 27 20 49 20M16 6l11 14L38 6"/>
+          <path class="cord" d="m5 20 16 25m28-25L33 45m-6-25v25"/>
+          <path class="payload" d="M20 43h14l-2 14H22Z"/>
+          <path class="payload-mark" d="M24 48h6"/>
+        </svg>
+      </div>
+      <svg class="success-check" viewBox="0 0 42 42" aria-hidden="true"><path d="m7 22 9 9L35 10"/></svg>
+    </div>
+  </section>
+
+  <div class="percentage" id="percentage">READY TO DOWNLOAD</div>
+  <div class="state" id="state">Press the button to send the payload.</div>
+  <button class="reset" id="reset" type="button" hidden>Download again <span>↻</span></button>
+
+  <div class="code-cards">
+    <article class="code-card html-card">
+      <h3><span>▣</span> index.html</h3>
+      <pre><code>&lt;!-- one stroke is both the ring and the track --&gt;
+&lt;path class="rail rail--fill"
+      pathLength="1"/&gt;
+
+&lt;!-- the payload that falls --&gt;
+&lt;g class="rig"&gt;
+  &lt;g class="canopy"&gt;...&lt;/g&gt;
+  &lt;path class="arrow"/&gt;
+  &lt;path class="check"/&gt;
+&lt;/g&gt;</code></pre>
+    </article>
+    <article class="code-card css-card">
+      <h3><span>◈</span> style.css</h3>
+      <pre><code>/* pathLength=1, so dashoffset
+   IS the progress — 0 … 1 */
+.rail--fill {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+}
+
+/* nothing flies if you asked
+   for less motion */
+@media (prefers-reduced-motion) {
+  .rig { display: none }
+}</code></pre>
+    </article>
+    <article class="code-card js-card">
+      <h3><span>✳</span> app.js</h3>
+      <pre><code>// the ring UNROLLS into the bar
+// each point blends its place
+y = ry + (lineY - ry) * p;
+
+// real bytes, real stream
+loaded += value.length;
+actual = loaded / total;
+
+// paced so a fast one reads
+shown = Math.min(actual,
+                 elapsed / minMs);</code></pre>
+    </article>
+  </div>
+</main>
+<footer>HTML <span>·</span> CSS <span>·</span> JAVASCRIPT</footer>
+<script src="app.js"></script>
+</body>
+</html>
